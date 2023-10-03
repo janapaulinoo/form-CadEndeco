@@ -12,7 +12,7 @@ const limparFormulario = () => {
 
 // Verifica se CEP é valido 
 const eNumero = (numero) => /^[0-9]+$/.test(numero); // testa numero informado com expessão regular
-const cepValido = (cep) => cep.lenght ==8 && eNumero(cep); // verifica tamanho do cep digitado e executa função de validação do cep eNumero
+const cepValido = (cep) => cep.length == 8 && eNumero(cep); // verifica tamanho do cep digitado e executa função de validação do cep eNumero
  
 //função para preencher formulario 
  const preencherFormulario = (endereco) => {
@@ -23,15 +23,22 @@ const cepValido = (cep) => cep.lenght ==8 && eNumero(cep); // verifica tamanho d
  } 
 
  //consumo da API da viaCep 
- const pesquisarCep = async () => {
+ const pesquisarCep = async() => {
     limparFormulario();
     const url = `http://viacep.com.br/ws/${cep.value}/json/`;
+    
     if(cepValido(cep.value)){
         const dados = await fetch(url); //aguardar 
         const addres = await dados.json();
 
         if(addres.hasOwnProperty('erro')){
-            
+            alert('CEP não encontrado');
+        }else{
+            preencherFormulario(addres);
         }
+    }else{
+        alert('CEP incorreto');
     }
  }
+ // adiciona evento DOM ao input do CEP para executar a função pesquisarCep
+ document.getElementById('cep').addEventListener('focusout', pesquisarCep);
