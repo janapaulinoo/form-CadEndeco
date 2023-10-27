@@ -25,7 +25,7 @@ const cepValido = (cep) => cep.length == 8 && eNumero(cep); // verifica tamanho 
  //consumo da API da viaCep 
  const pesquisarCep = async() => {
     limparFormulario();
-    const url = `http://viacep.com.br/ws/${cep.value}/json/`;
+    const url = `https://viacep.com.br/ws/${cep.value}/json/`;
     
     if(cepValido(cep.value)){
         const dados = await fetch(url); //aguardar 
