@@ -4,7 +4,8 @@
 Esse repositório armazena o projeto de formulário de Cadastro de Endereço tirado no Bootstrap 5. Foi escolhido um modelo de formulário e o código foi trazido para o arquivo index.html desse projeto onde foram feitas alterações para deixar o formulário organizado e de fácil compreensão para o usuário final.   
 confira o video abaixo de como fiz para pegar o codigo do bootstrap😉 
 ![](_img/explicacao.gif)  
-adicionamos uma linha de ligação na pagina do index.html para ligar no arquivo do JavaScript. 
+adicionamos uma linha de ligação na pagina do index.html para ligar no arquivo do JavaScript.  
+Reutilizamos o código do ultimo trabalho que fizemos e adicionamos campos de cadastro, neste campo possui, nome, e-mail, data de nascimento, Telefone, senha, confirmação de senha e sexo, feito isso, mexemos nas linhas para mudar a  cor e organizamos a tela para se adaptar.
 
 ## funçoes 
 Iniciamos os códigos do JavaScript  
@@ -50,23 +51,18 @@ Tem a função de preencher formulário
  
 
 Consumo da API da ViaCep  
-abre uma porta para acessar a URL  
+abre uma porta para acessar a URL 
+Função async: significa que o valor de retorno da função será visivel para a pessoas que está execultando, se a função der certo ou errado ela irá dar um retorno, uma Promise. (o que é promisse? representa a conclusão (ou falha) de uma operação assíncrona e seu valor resultante.)
+função await: é uma função para esperar por uma promisse. função feth: vai se encaminhar para o link do viaCep e pegar os dados que estão lá, e trazer para o const dados. JSON tipo de linguagem
 
     const pesquisarCep = async () => {
-
     limparFormulario();
-
     const url = `http://viacep.com.br/ws/${cep.value}/json/`;
-
     if (cepValido(cep.value)) {
-
     const dados = await fetch(url);
-
- 
-
-JSON tipo de linguagem  
- 
     const addres = await dados.json();
+
+
 ``hasOwnProperty`` retorna um booleano indicando se o objeto possui a propriedade especificada como uma propriedade definida no próprio objeto em questão  
 
     if (addres.hasOwnProperty('erro')) {
@@ -85,7 +81,9 @@ Adiciona efeito DOM ao input do CEP para executar função pesquisarCEP
 
 (o DOM é um tipo de caminho que irá te auxilar nos códigos.
 
-Para mais informações acesse o link da [mozilla](https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model/Introduction))
+Para mais informações acesse o link da [mozilla](https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model/Introduction))  
+``addEventListener``permite que você configure funções a serem chamadas quando um evento específico acontece, como, por exemplo, quando um usuário clica em um botão.
+tem menu de contexto
 
  
 
